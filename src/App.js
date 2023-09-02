@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     getCoffeeList();
-  });
+  }, []);
 
   const onSubmitCoffee = async () => {
     try {
@@ -46,8 +46,6 @@ function App() {
         userId: auth?.currentUser?.uid,
       });
       getCoffeeList();
-      setNewItem('');
-      setNewPrice(0);
     } catch (err) {
       console.error(err);
     }
@@ -56,6 +54,7 @@ function App() {
   const deleteCoffee = async (id) => {
     const coffeeDoc = doc(db, 'coffeelist', id);
     await deleteDoc(coffeeDoc);
+    getCoffeeList()
   };
 
   const updateCoffee = async (id) => {

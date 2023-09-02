@@ -3,12 +3,12 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBdse-Pbo6LWo4G34Qd7L5sV6_o-GJgHwo",
-  authDomain: "joe-coffee-39ea4.firebaseapp.com",
-  projectId: "joe-coffee-39ea4",
-  storageBucket: "joe-coffee-39ea4.appspot.com",
-  messagingSenderId: "467623015437",
-  appId: "1:467623015437:web:b85bb75dd1aa7e6a9d9144"
+  apiKey: "AIzaSyB4mZUAcSVu3YagcoLG2pvHbjDPlPrc04U",
+  authDomain: "joe-coffee2.firebaseapp.com",
+  projectId: "joe-coffee2",
+  storageBucket: "joe-coffee2.appspot.com",
+  messagingSenderId: "769090205264",
+  appId: "1:769090205264:web:b16f96f8833d6ff53a4355"
 };
 
 const app = initializeApp(firebaseConfig);
