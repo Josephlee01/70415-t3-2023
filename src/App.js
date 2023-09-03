@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import { Auth } from './components/auth';
 import { db, auth } from './config/firebase';
 import {
@@ -62,12 +61,12 @@ function App() {
     await updateDoc(coffeeDoc, {
       item: updatedItem,
     });
+    getCoffeeList();
   };
 
   return (
     <div className="App">
       <Auth />
-
       <div>
         <input
           placeholder="Item"
@@ -83,13 +82,12 @@ function App() {
 
         <button onClick={onSubmitCoffee}> Upload Coffee</button>
       </div>
-      <div>
+      <div className='container'>
         {coffeeList.map((coffee) => (
-          <div>
+          <div className='item'>
             <h1>{coffee.item}</h1>
             <p>Price: $ {coffee.price}</p>
 
-            <button onClick={() => deleteCoffee(coffee.id)}>Delete Item</button>
 
             <input
               placeholder="new item"
@@ -100,6 +98,7 @@ function App() {
               {' '}
               Update Coffee
             </button>
+            <button className='del-btn' onClick={() => deleteCoffee(coffee.id)}>Delete Item</button>
           </div>
         ))}
       </div>

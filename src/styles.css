@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+.container {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.item {
+  border: 2px solid black;
+}
+.del-btn {
+  margin: 1rem auto;
+  display : block;
+  font-size: 1rem;
+  color: aliceblue;
+  background-color: red;
+  
+}
