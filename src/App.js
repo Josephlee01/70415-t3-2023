@@ -18,6 +18,16 @@ function App() {
 
   const [updatedItem, setUpdatedItem] = useState('');
 
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   const colRef = collection(db, 'coffeelist');
 
   const getCoffeeList = async () => {
@@ -53,7 +63,7 @@ function App() {
   const deleteCoffee = async (id) => {
     const coffeeDoc = doc(db, 'coffeelist', id);
     await deleteDoc(coffeeDoc);
-    getCoffeeList()
+    getCoffeeList();
   };
 
   const updateCoffee = async (id) => {
@@ -67,7 +77,7 @@ function App() {
   return (
     <div className="App">
       <Auth />
-      <div>
+      <div className="add-item">
         <input
           placeholder="Item"
           onChange={(e) => setNewItem(e.target.value)}
@@ -82,13 +92,25 @@ function App() {
 
         <button onClick={onSubmitCoffee}> Upload Coffee</button>
       </div>
-      <div className='container'>
+      <div className="container">
         {coffeeList.map((coffee) => (
-          <div className='item'>
+          <div className="item">
             <h1>{coffee.item}</h1>
-            <p>Price: $ {coffee.price}</p>
-
-
+            <p>Price: A$ {coffee.price}.00</p>
+            {modalVisible && (
+              <div className="modal">
+                <div className="modal-content">
+                  <h1>{coffee.item}</h1>
+                  <h3>A$ {coffee.price}.00</h3>
+                  <button onClick={closeModal} style={{ fontSize: '1.2rem' }}>
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
+            <button className="dtl-btn" onClick={openModal}>
+              View Detail
+            </button>
             <input
               placeholder="new item"
               onChange={(e) => setUpdatedItem(e.target.value)}
@@ -98,7 +120,10 @@ function App() {
               {' '}
               Update Coffee
             </button>
-            <button className='del-btn' onClick={() => deleteCoffee(coffee.id)}>Delete Item</button>
+
+            <button className="del-btn" onClick={() => deleteCoffee(coffee.id)}>
+              Delete Item
+            </button>
           </div>
         ))}
       </div>
